@@ -131,7 +131,7 @@ def page4():
     URL = 'Data-Before-Mapping.csv'
     df = pd.read_csv(URL)
 
-    st.header('Competition Analysis')
+    st.header('Composition Analysis')
 
     df_yearly = df[df['Year'].isin([2010, 2011, 2012])]
 
@@ -204,21 +204,27 @@ def page6():
         st.balloons()  # Adding balloons animation when the button is clicked
 
 # Fungsi utama untuk menavigasi antar halaman
+import streamlit as st
+
+# Fungsi utama untuk menavigasi antar halaman
 def main():
     pages = {
-        "Dashboard": page1,
-        "Data Distribution": page2,
-        "Relationship Analysis": page3,
-        "Competition Analysis": page4,
-        "Comparison Analysis": page5,
-        "Data Prediction": page6
+        "Dashboard 🏠": page1,
+        "Data Distribution 📊": page2,
+        "Relationship Analysis 💡": page3,
+        "Composition Analysis 🏆": page4,
+        "Comparison Analysis 🔄": page5,
+        "Data Prediction 📈": page6
     }
 
-    st.sidebar.title('Walmart Sales')
-    selection = st.sidebar.radio("Select Page", list(pages.keys()))
+    # Pilihan navigasi antar halaman dengan sidebar yang dapat di-scroll
+    selected_page = st.sidebar.selectbox(
+        "Select Page",
+        options=list(pages.keys())
+    )
 
     # Panggil fungsi halaman yang dipilih
-    pages[selection]()
+    pages[selected_page]()
 
 if __name__ == "__main__":
     main()
